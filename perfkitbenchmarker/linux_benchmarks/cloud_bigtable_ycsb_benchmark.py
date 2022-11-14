@@ -46,7 +46,7 @@ from perfkitbenchmarker.providers.gcp import gcp_bigtable
 FLAGS = flags.FLAGS
 
 HBASE_CLIENT_VERSION = '1.x'
-BIGTABLE_CLIENT_VERSION = '1.4.0'
+BIGTABLE_CLIENT_VERSION = '1.27.1'
 
 # TODO(user): remove the custom ycsb build once the head version of YCSB
 # is updated to share Bigtable table object. The source code of the patched YCSB

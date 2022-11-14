@@ -248,6 +248,15 @@ def _Install(vm: virtual_machine.VirtualMachine, bigtable: _Bigtable) -> None:
   vm.RemoteCommand(
       f'echo "export JAVA_HOME=/usr" >> {hbase.HBASE_CONF_DIR}/hbase-env.sh')
 
+  vm.RemoteCommand(f'echo "export GOOGLE_CLOUD_ENABLE_DIRECT_PATH_XDS=true" >> ~/.bashrc')
+  vm.RemoteCommand(f'echo "export GRPC_EXPERIMENTAL_XDS_RLS_LB=true" >> ~/.bashrc')
+
+  vm.RemoteCommand(f'echo "export GOOGLE_CLOUD_ENABLE_DIRECT_PATH_XDS=true" >> ~/.profile')
+  vm.RemoteCommand(f'echo "export GRPC_EXPERIMENTAL_XDS_RLS_LB=true" >> ~/.profile')
+
+  vm.RemoteCommand(f'export GOOGLE_CLOUD_ENABLE_DIRECT_PATH_XDS=true')
+  vm.RemoteCommand(f'export GRPC_EXPERIMENTAL_XDS_RLS_LB=true')
+
   context = {
       'google_bigtable_endpoint': _ENDPOINT.value,
       'google_bigtable_admin_endpoint': _ADMIN_ENDPOINT.value,

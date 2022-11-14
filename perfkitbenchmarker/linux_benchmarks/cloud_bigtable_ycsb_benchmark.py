@@ -248,6 +248,11 @@ def _Install(vm: virtual_machine.VirtualMachine, bigtable: _Bigtable) -> None:
   vm.RemoteCommand(
       f'echo "export JAVA_HOME=/usr" >> {hbase.HBASE_CONF_DIR}/hbase-env.sh')
 
+  vm.RemoteCommand(
+      f'echo "export GOOGLE_CLOUD_ENABLE_DIRECT_PATH_XDS=true" >> {hbase.HBASE_CONF_DIR}/hbase-env.sh')
+  vm.RemoteCommand(
+      f'echo "export GRPC_EXPERIMENTAL_XDS_RLS_LB=true" >> {hbase.HBASE_CONF_DIR}/hbase-env.sh')
+
   vm.RemoteCommand(f'echo "export GOOGLE_CLOUD_ENABLE_DIRECT_PATH_XDS=true" >> ~/.bashrc')
   vm.RemoteCommand(f'echo "export GRPC_EXPERIMENTAL_XDS_RLS_LB=true" >> ~/.bashrc')
 
